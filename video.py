@@ -80,13 +80,13 @@ class InstagramBot():
 
         all_links = []
         for photo in all_photos:
-            if self.check_like_amount(photo) > 500:
-                print("More than 500 Likes ")
-                link = photo.find_element_by_css_selector(
+            #if self.check_like_amount(photo) > 500:
+           #     print("More than 500 Likes ")
+            link = photo.find_element_by_css_selector(
                     'a').get_attribute('href')
-                all_links.append(link)
-            else:
-                print("smaller than 500 Likes... NUB :D")
+            all_links.append(link)
+            #else:
+               # print("smaller than 500 Likes... NUB :D")
 
         time.sleep(5)
 
@@ -210,18 +210,15 @@ class InstagramBot():
                 self.unfollow_users()
 
             time.sleep(random.randint(10, 80))
-    
-    def test(self):
-        self.browser.get("https://www.google.de")
+
 
 Bot = InstagramBot(LoginData.Username(), LoginData.Password())
 
-Bot.test()
-#Bot.login()
+Bot.login()
 
-# Bot.unfollow_users()
+Bot.unfollow_users()
 
-#Bot.collect_photos(Bot.config.RandomHashtag())
+Bot.collect_photos(Bot.config.RandomHashtag())
 
-# Bot.BotRoutine(like=True, comments=True,
-#               follow_users=True, unfollow_users=False)
+Bot.BotRoutine(like=True, comments=True,
+               follow_users=True, unfollow_users=False)
