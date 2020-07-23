@@ -4,9 +4,8 @@ import time
 import random
 #Initialize Bot
 
-bot = InstagramMain("UserName","Password")
+bot = InstagramMain("","")
 bot.login()
-
 
 while True:
     collected_photos = bot.collect_photos_by_hashtag(bot.mConfig.RandomHashtag())
@@ -24,7 +23,6 @@ while True:
 
            # Follow user from Photo open
            # bot.follow_user(bot.get_Profile())
-
 
     # Accept alle Followers Requests
     # bot.AcceptFollowers()

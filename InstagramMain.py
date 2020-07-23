@@ -31,10 +31,10 @@ class InstagramMain():
         operation_system = sys.platform
         if operation_system == "win32":
             self.browser = webdriver.Chrome(
-                "webdrivers/win/chromedriver.exe", options=opts)
+                os.getcwd() + "/webdrivers/win/chromedriver.exe", options=opts)
 
         elif operation_system == "darwin":
-            self.browser = webdriver.Chrome("webdrivers/mac/chromedriver", options=opts)
+            self.browser = webdriver.Chrome(os.curdir() + "/webdrivers/mac/chromedriver", options=opts)
 
         elif operation_system == "linux" or operation_system == "linux2":
             self.browser = webdriver.Chrome("webdrivers/linux/chromedriver", options=opts)
@@ -97,11 +97,13 @@ class InstagramMain():
 
     def collect_photos_by_hashtag(self, hashtag):
         self.browser.get(f"https://www.instagram.com/explore/tags/{hashtag}/")
+        
+        for n in range(1,8):
+            self.browser.execute_script("window.scrollTo(0, {})".format(n*4000))
+            time.sleep(1)
 
-        self.browser.execute_script("window.scrollTo(0, 4000)")
         all_photos = self.WaitForObjects(
             By.CSS_SELECTOR, "div.v1Nh3.kIKUG._bz0w")
-
         if all_photos != False:
             all_links = []
             for photo in all_photos:
