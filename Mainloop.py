@@ -4,6 +4,12 @@ import time
 import random
 #Initialize Bot
 
+import os
+
+print(os.getcwd())
+
+
+
 bot = InstagramMain("","")
 bot.login()
 

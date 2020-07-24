@@ -34,10 +34,10 @@ class InstagramMain():
                 os.getcwd() + "/webdrivers/win/chromedriver.exe", options=opts)
 
         elif operation_system == "darwin":
-            self.browser = webdriver.Chrome(os.curdir() + "/webdrivers/mac/chromedriver", options=opts)
+            self.browser = webdriver.Chrome(os.getcwd() + "/webdrivers/mac/chromedriver", options=opts)
 
         elif operation_system == "linux" or operation_system == "linux2":
-            self.browser = webdriver.Chrome("webdrivers/linux/chromedriver", options=opts)
+            self.browser = webdriver.Chrome(os.getcwd() + "/webdrivers/linux/chromedriver", options=opts)
 
         self.mConfig = ConfigLoader()
         self.mConfig.ReadConfig()
